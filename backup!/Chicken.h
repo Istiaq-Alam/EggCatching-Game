@@ -7,10 +7,10 @@ private:
 
 public:
     Chicken(float x, float y);
-    void draw();
 
-    float getX() { return x; }
-    float getY() { return y; }
+    void draw();
+    float getX();
+    float getY();
 };
 
 #endif

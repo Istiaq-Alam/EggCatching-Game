@@ -6,17 +6,24 @@
 #include "Egg.h"
 #include "Chicken.h"
 
-enum GameState { HOME, PLAYING, GAME_OVER };
+
+enum GameState {
+    HOME,
+    PLAYING,
+    GAME_OVER
+};
 
 class Game {
 private:
     int score;
     int lives;
+    float eggSpeed;
     GameState state;
 
     Bucket bucket;
-    Egg* currentEgg;
+    std::vector<Egg> eggs;
     std::vector<Chicken> chickens;
+
 
 public:
     void init();
@@ -24,10 +31,9 @@ public:
     void render();
     void handleInput(unsigned char key);
 
-private:
     void spawnEgg();
     void checkCollisions();
-    void drawText(float x, float y, const char* text);
+    void increaseDifficulty();
 };
 
 #endif

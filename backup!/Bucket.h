@@ -1,8 +1,6 @@
 #ifndef BUCKET_H
 #define BUCKET_H
 
-#include "Egg.h"
-
 class Bucket {
 private:
     float x, y;
@@ -17,12 +15,10 @@ public:
     void moveRight();
     void draw();
 
-    bool checkCollision(Egg& egg);
-
-    float getX() { return x; }
-    float getY() { return y; }
-    float getWidth() { return width; }
-    float getHeight() { return height; }
+    float getX();
+    float getY();
+    float getWidth();
+    float getHeight();
 };
 
 #endif
