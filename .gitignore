@@ -1,0 +1,63 @@
+# =========================
+# Build folders
+# =========================
+bin/
+obj/
+build/
+dist/
+
+# =========================
+# Executables
+# =========================
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.a
+*.o
+*.obj
+
+# =========================
+# Debug files
+# =========================
+*.log
+*.tlog
+*.ilk
+*.pdb
+*.idb
+
+# =========================
+# CodeBlocks files
+# =========================
+*.layout
+*.depend
+*.cbp.bak
+*.workspace
+*.autosave
+
+# =========================
+# CMake (if ever used later)
+# =========================
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# =========================
+# OS generated files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# VSCode (if you open it there)
+# =========================
+.vscode/
+
+# =========================
+# Temporary files
+# =========================
+*.tmp
+*.temp
