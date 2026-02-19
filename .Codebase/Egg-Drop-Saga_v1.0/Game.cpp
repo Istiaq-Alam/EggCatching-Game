@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <sstream>
+#include <math.h>
 
 void Game::drawText(float x, float y, const char* text) {
     glRasterPos2f(x, y);
@@ -66,15 +67,48 @@ void Game::update() {
     checkCollisions();
 }
 
+// change the life as red heart shapes
+void drawHeart(float x, float y, float size) {
+    glColor3f(1.0f, 0.0f, 0.0f); // Red color
+
+    // Draw two circles for top of heart
+    int numSegments = 50;
+    float radius = size / 2.0f;
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(x, y);
+    for (int i = 0; i <= numSegments; i++) {
+        float angle = 3.14159f * i / numSegments; // Half circle
+        glVertex2f(x - radius + cos(angle) * radius, y + sin(angle) * radius);
+    }
+    glEnd();
+
+    glBegin(GL_TRIANGLE_FAN);
+    glVertex2f(x + radius, y);
+    for (int i = 0; i <= numSegments; i++) {
+        float angle = 3.14159f * i / numSegments; // Half circle
+        glVertex2f(x + radius + cos(angle) * radius, y + sin(angle) * radius);
+    }
+    glEnd();
+
+    // Draw bottom triangle
+    glBegin(GL_TRIANGLES);
+    glVertex2f(x - size, y);
+    glVertex2f(x + size * 1, y);
+    glVertex2f(x + size / -20.0f, y - size * 1.5f);
+    glEnd();
+}
+
+
 void Game::render() {
     glClear(GL_COLOR_BUFFER_BIT);
 
     if (state == HOME) {
-        drawText(280, 350, "EGG CATCHER GAME");
-        drawText(300, 300, "Press S to Start");
-        drawText(310, 270, "Use A/D to Move Bucket");
-        drawText(310, 240, "Catch Eggs Before They Hit Ground");
-        drawText(310, 200, "Press Q to Quit");
+        drawText(280, 350, "Egg Drop Saga");
+        drawText(280, 300, "Press S to Start");
+        drawText(280, 270, "Use A/D to Move Bucket");
+        drawText(280, 240, "Catch Eggs Before They Hit Ground");
+        drawText(280, 200, "Press Q to Quit");
     }
     else if (state == PLAYING) {
         // Draw wire
@@ -101,9 +135,19 @@ void Game::render() {
         ss << "Score: " << score;
         drawText(20, 570, ss.str().c_str());
 
-        ss.str("");
-        ss << "Lives: " << lives;
-        drawText(700, 570, ss.str().c_str());
+        // Old numeric display
+        // ss.str("");
+        // ss << "Lives: " << lives;
+        // drawText(700, 570, ss.str().c_str());
+        float startX = 700;
+        float startY = 570;
+        float heartSize = 10.0f; // Adjust for size
+
+        for (int i = 0; i < lives; i++) {
+            drawHeart(startX + i * 25, startY, heartSize);
+        }
+
+
     }
     else if (state == GAME_OVER) {
         drawText(320, 350, "GAME OVER");
@@ -131,3 +175,4 @@ void Game::handleInput(unsigned char key) {
         if (key == 'd') bucket.moveRight();
     }
 }
+

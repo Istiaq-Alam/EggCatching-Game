@@ -29,7 +29,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
     glutInitWindowSize(800, 600);
-    glutCreateWindow("Egg Catcher - Sequential Egg Skeleton");
+    glutCreateWindow("Egg Drop Saga - Test Game Sequential Skeleton");
 
     glClearColor(0.5, 0.8, 1.0, 1.0); // Sky blue
     gluOrtho2D(0, 800, 0, 600);
