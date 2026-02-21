@@ -141,20 +141,20 @@ This creates progressive gameplay challenge.
 
 ## 🎨 Current Visual State
 
-[*] This version uses placeholder graphics:
+⚪ This version uses placeholder graphics:
 - Bucket → Rectangle
 - Egg → Circle
 - Chicken → Basic primitive shape
 - Background → Static sky color
 
-[*] Future versions will include:
+⚪ Future versions will include:
 - Animated clouds
 - Improved egg shape
 - Broken egg animation
 - Enhanced UI
 - Sound effects
 
-[*] 🧪 Known Limitations
+⚪ 🧪 Known Limitations
 - No background animation yet
 - No textures
 - No sound
